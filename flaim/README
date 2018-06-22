@@ -1,0 +1,129 @@
+FLAIM README file
+=================
+
+NOTE: This README file covers platform-independant, and GNU/Linux and
+Unix specific information. For information on building and installing
+on Windows platforms, please see the README.W32 file.
+
+Contents
+--------
+1. What is FLAIM?
+2. Building FLAIM
+3. Installing FLAIM
+
+What is FLAIM?
+--------------
+
+FLAIM is an acronym that stands for FLexible Adaptable Information 
+Management. The FLAIM library provides a very fast and easy to use 
+embedded DBMS system, which can be linked statically or dynamically 
+into your application.
+
+The FLAIM library forms the basis for two very successful commercial 
+products:
+
+  1. Novell eDirectory - a powerful LDAP compliant directory
+  2. Novell GroupWise - a world-class email and calendaring solution
+
+Besides these commercial offerings, FLAIM has been used successfully in 
+several smaller Novell projects, including Novell's open source iFolder
+project.
+
+The FLAIM package provides source code for the FLAIM libraries in the "src" 
+directory, and several useful utilities in the "util" directory:
+
+  1. flmdbcheck - checks the integrity of a flaim database and indices
+  2. flmrebuild - rebuilds flaim database index files
+  3. flmview - view the contents of a flaim database
+  4. flmdbshell - perform DB operations from a shell-like command prompt
+  5. flmgigatest - load a FLAIM database with _billions_ of entries
+
+These utilities have been used by Novell engineers to test the features of 
+FLAIM and the integrity of FLAIM databases for both eDirectory and GroupWise.
+
+Additionally, the "util" directory supplies a unit test for the FLAIM library 
+called "ut_basictest", which is built and executed during "make check".
+
+Building FLAIM
+--------------
+
+IMPORTANT: You must have installed Autoconf version 2.62, Automake version 
+1.10 and Libtool version 2.2. These are the latest versions of these three
+tools, as of this writing (July 2, 2008).
+
+Building FLAIM on Unix and Linux systems is as simple as with any other
+Autotools-based project. If you're building from an SVN working directory,
+enter the following command first, immediately after a clean check-out:
+
+  $ autoreconf -i
+
+This command will generate a configure script and Makefile.in templates. 
+If you find yourself modifying the FLAIM build system (eg., configure.ac
+and Makefile.am files), then you may omit the "-i" option in later 
+executions of the autoreconf utility. 
+
+If you're building from a tarball, you may skip the "autoreconf" step above
+and move right to the following steps:
+
+  $ ./configure
+  $ make all check 
+
+The FLAIM build system provides all the default functionality provided by 
+any Autotools build system, including VPATH build support. To build from 
+outside the source directory, enter the following commands (for example):
+
+  $ mkdir build
+  $ cd build
+  $ ../configure
+  $ make all check
+ 
+FLAIM depends on the FLAIM tool kit (ftk) library, which is another sub-
+project in the flaim-projects repository. To build FLAIM from the flaim 
+directory within the flaim-projects hierarchy, or from an flaim tarball, 
+you will need to do one of three things to make the FLAIM tool kit available
+to the FLAIM build system:
+
+  1. Install the ftk project source in a sub-directory beneath flaim.
+  2. Build ftk separately and provide FTKLIB & FTKINC variables to configure.
+  3. Install the ftk project libraries and header files on your build host.
+
+Either one of these solutions will work fine. Building ftk as a sub-project
+will provide more flexibility, but will cause the build to take longer as you
+are effectively building the FLAIM tool kit along with FLAIM.
+
+If you choose the third option, the FLAIM build system will automatically
+locate and use the libflaimtk.la and flaimtk.h files on your system.
+ 
+Installing FLAIM
+----------------
+
+To install FLAIM libraries and header files, you may type the following 
+command after building FLAIM:
+
+  $ sudo make install
+
+The default prefix for the FLAIM Autotools build system is "/usr/local".
+If you wish to install in a different location, then use either one of the
+following commands:
+
+  $ ./configure PREFIX=/usr
+  $ make all check
+  $ sudo make install
+
+or 
+
+  $ ./configure
+  $ make prefix=/usr 
+  $ sudo make prefix=/usr install
+
+If you have questions or feedback, please send mail to one of the two user-
+writeable flaim mailing lists:
+
+  1. flaim-users@forge.novell.com
+  2. flaim-devel@forge.novell.com
+
+The flaim-announce list may be subscribed to for occasional notifications of
+updates to the FLAIM projects.
+
+Enjoy!
+

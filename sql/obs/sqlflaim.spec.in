@@ -1,0 +1,61 @@
+Name: @PACKAGE_TARNAME@
+BuildRequires: gcc-c++ libstdc++-devel flaimtk-devel
+Requires: libstdc++ flaimtk
+Summary: SQLFLAIM is a SQL database library.
+URL: http://sourceforge.net/projects/flaim/
+Version: @PACKAGE_VERSION@
+Release: 1
+License: GPL
+Vendor: Novell, Inc.
+Group: Development/Libraries/C and C++
+Source: %{name}-%{version}.tar.gz
+BuildRoot: %{_tmppath}/%{name}-%{version}-build
+
+%description
+SQLFLAIM is a SQL database library.
+
+Authors:
+--------
+    dsanders@novell.com
+    ahodgkinson@novell.com
+
+%package devel
+Summary: SQLFLAIM static library and header file
+Group: Development/Libraries/C and C++
+
+%description devel
+SQLFLAIM is a SQL database library.
+
+%prep
+%setup -q
+
+%build
+%configure
+make
+
+%check
+make check
+
+%install
+make DESTDIR=%{buildroot} install
+rm -rf %{buildroot}%{_datadir}/doc/%{name}/html
+
+%clean
+rm -rf %{buildroot}
+
+%files
+%defattr(-,root,root)
+%doc %{_datadir}/doc/%{name}/AUTHORS
+%doc %{_datadir}/doc/%{name}/ChangeLog
+%doc %{_datadir}/doc/%{name}/COPYING
+%doc %{_datadir}/doc/%{name}/INSTALL
+%doc %{_datadir}/doc/%{name}/NEWS
+%doc %{_datadir}/doc/%{name}/README
+%{_libdir}/libflaimsql.la
+%{_libdir}/libflaimsql.so*
+
+%files devel
+%{_libdir}/pkgconfig/libflaimsql.pc
+%{_libdir}/libflaimsql.a
+%{_includedir}/flaimsql.h
+

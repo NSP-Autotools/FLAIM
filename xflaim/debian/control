@@ -1,0 +1,30 @@
+Source: libxflaim
+Priority: optional
+Maintainer: Andrew Hodgkinson (Sr. Software Engineer) <ahodgkinson@novell.com>
+Build-Depends: debhelper (>= 5.0), libncurses-dev
+Standards-Version: 3.7.2
+Section: libs
+
+Package: libxflaim-dev
+Section: libdevel
+Architecture: any
+Depends: libxflaim (= ${Source-Version})
+Description: An extensible, flexible, adaptable, embeddable XML database engine
+ XFLAIM is an embeddable cross-platform XML database engine that
+ provides a rich, powerful, easy-to-use feature set.  It has proven to be
+ highly scalable, reliable, and robust.  It is available on a wide
+ variety of 32 bit and 64 bit platforms.
+ .
+ Homepage: http://www.bandit-project.org/index.php/FLAIM
+
+Package: libxflaim5
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: An extensible, flexible, adaptable, embeddable XML database engine
+ XFLAIM is an embeddable cross-platform XML database engine that
+ provides a rich, powerful, easy-to-use feature set.  It has proven to be
+ highly scalable, reliable, and robust.  It is available on a wide
+ variety of 32 bit and 64 bit platforms.
+ .
+ Homepage: http://www.bandit-project.org/index.php/FLAIM

@@ -1,0 +1,10 @@
+Manifest-version: 1.0
+
+Name: $(project_name)
+Specification-Title: "XFLAIM Java Classes"
+Specification-Version: "$(major_version).$(minor_version)"
+Specification-Vendor: "Novell, Inc."
+Package-Title: "xflaim"
+Package-Version: "$(version)"
+Package-Vendor: "Novell, Inc."
+

@@ -1,0 +1,8 @@
+<xflaim:Index xmlns:xflaim="http://www.novell.com/XMLDatabase/Schema" xflaim:name="Title+Index+Offset" xflaim:DictNumber="1">
+	<xflaim:ElementComponent xflaim:name="title" xflaim:KeyComponent="1" xflaim:IndexOn="value"/>
+	<xflaim:ElementComponent xflaim:name="track" xflaim:IndexOn="value">
+		<xflaim:AttributeComponent xflaim:name="index" xflaim:KeyComponent="2" xflaim:IndexOn="value"/>
+		<xflaim:AttributeComponent xflaim:name="offset" xflaim:KeyComponent="3" xflaim:IndexOn="value"/>
+	</xflaim:ElementComponent>
+</xflaim:Index>
+

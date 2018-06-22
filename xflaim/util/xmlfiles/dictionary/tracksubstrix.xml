@@ -1,0 +1,3 @@
+<xflaim:Index xmlns:xflaim="http://www.novell.com/XMLDatabase/Schema" xflaim:name="track index">
+	<xflaim:ElementComponent xflaim:name="track" xflaim:IndexOn="substring" xflaim:KeyComponent="1"/>
+</xflaim:Index>

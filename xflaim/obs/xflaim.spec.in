@@ -1,0 +1,73 @@
+Name: @PACKAGE_TARNAME@
+BuildRequires: gcc-c++ libstdc++-devel flaimtk-devel gcc-java gjdoc gcc-gij fastjar mono-core doxygen
+Requires: libstdc++ flaimtk mono-core java >= 1.4.2
+Summary: XFLAIM is an XML database library.
+URL: http://sourceforge.net/projects/flaim/
+Version: @PACKAGE_VERSION@
+Release: 1
+License: GPL
+Vendor: Novell, Inc.
+Group: Development/Libraries/C and C++
+Source: %{name}-%{version}.tar.gz
+BuildRoot: %{_tmppath}/%{name}-%{version}-build
+
+%description
+XFLAIM is an XML database library.
+
+Authors:
+--------
+    dsanders@novell.com
+    ahodgkinson@novell.com
+
+%package devel
+Summary: XFLAIM static library and header file
+Group: Development/Libraries/C and C++
+
+%description devel
+XFLAIM is an XML database library.
+
+%prep
+%setup -q
+
+%build
+%configure
+make
+
+%check
+make check
+
+%install
+rm -rf %{buildroot}
+make DESTDIR=%{buildroot} install
+rm -rf %{buildroot}%{_datadir}/doc/%{name}/html
+
+%clean
+rm -rf %{buildroot}
+
+%files
+%defattr(-,root,root)
+%doc %{_datadir}/doc/%{name}/AUTHORS
+%doc %{_datadir}/doc/%{name}/ChangeLog
+%doc %{_datadir}/doc/%{name}/COPYING
+%doc %{_datadir}/doc/%{name}/INSTALL
+%doc %{_datadir}/doc/%{name}/NEWS
+%doc %{_datadir}/doc/%{name}/README
+%doc %{_datadir}/doc/%{name}/%{name}-doxy-%{version}.tar.gz 
+%doc %{_datadir}/doc/%{name}/xflaim_csharp.xml
+%doc %{_datadir}/doc/%{name}/XFLAIMArchitecture.odg
+%doc %{_datadir}/doc/%{name}/XFLAIMArchitecture.png
+%{_datadir}/java/xflaimjni-%{version}.jar
+%{_libdir}/libxflaim.la
+%{_libdir}/libxflaim.so*
+%{_libdir}/xflaim_csharp.dll
+%{_bindir}/xflmcheckdb
+%{_bindir}/xflmrebuild
+%{_bindir}/xflmview
+%{_bindir}/xflmdbshell
+
+%files devel
+%{_libdir}/pkgconfig/libxflaim.pc
+%{_libdir}/libxflaim.a
+%{_includedir}/xflaim.h
+
+

@@ -1,0 +1,122 @@
+XFLAIM README file
+==================
+
+NOTE: This README file covers platform-independant, and GNU/Linux and
+Unix specific information. For information on building and installing
+on Windows platforms, please see the README.W32 file.
+
+Contents
+--------
+1. What is XFLAIM?
+2. Building XFLAIM
+3. Installing XFLAIM
+
+What is XFLAIM?
+---------------
+
+XFLAIM is an acronym that stands for XML FLexible Adaptable Information 
+Management. The XFLAIM library provides a very fast and easy to use embedded
+XML DBMS system, which can be linked statically or dynamically into your
+application. Essentially, XFLAIM is a version of the original FLAIM project
+that is optimized for XML document storage.
+
+The XFLAIM library comes from work done on internal projects at Novell, and
+is currently used as part of the Bandit open source identity project sponsored
+by Novell.
+
+The XFLAIM package provides source code for the XFLAIM libraries in the "src" 
+directory, and several useful utilities in the "util" directory:
+
+  1. xflmdbcheck - checks the integrity of an xflaim database and indices
+  2. xflmrebuild - rebuilds xflaim database index files
+  3. xflmview - view the contents of an xflaim database
+  4. xflmdbshell - perform DB operations from a shell-like command prompt
+
+Additionally, the "util" directory supplies over 20 unit test programs that
+individually test dozens of internal facets of the XFLAIM libraries. These
+unit tests are run and executed you (the user) enters "make check" at the
+command line on your host system.
+
+Building XFLAIM
+---------------
+
+IMPORTANT: You must have installed Autoconf version 2.62, Automake version 
+1.10 and Libtool version 2.2. These are the latest versions of these three
+tools, as of this writing (July 2, 2008).
+
+Building XFLAIM on Unix and Linux systems is as simple as with any other
+Autotools-based project. If you're building from an SVN working directory,
+enter the following command first, immediately after a clean check-out:
+
+  $ autoreconf -i
+
+This command will generate a configure script and Makefile.in templates. 
+If you find yourself modifying the XFLAIM build system (eg., configure.ac
+and Makefile.am files), then you may omit the "-i" option in later executions
+of the autoreconf utility. 
+
+If you're building from a tarball, you may skip the "autoreconf" step above
+and move right to the following steps:
+
+  $ ./configure
+  $ make all check 
+
+The XFLAIM build system provides all the default functionality provided by 
+any Autotools build system, including VPATH build support. To build from
+outside the source directory, enter the following commands (for example):
+
+  $ mkdir build
+  $ cd build
+  $ ../configure
+  $ make all check
+
+XFLAIM depends on the FLAIM tool kit (ftk) library, which is another sub-
+project in the flaim-projects repository. To build XFLAIM from the xflaim 
+directory within the flaim-projects hierarchy, or from an xflaim tarball, 
+you will need to do one of three things to make the FLAIM tool kit available
+to the XFLAIM build system:
+
+  1. Install the ftk project source in a sub-directory beneath xflaim.
+  2. Build ftk separately and provide FTKLIB & FTKINC variables to configure.
+  3. Install the ftk project libraries and header files on your build host.
+
+Either one of these solutions will work fine. Building ftk as a sub-project
+will provide more flexibility, but will cause the build to take longer as you
+are effectively building the FLAIM tool kit along with XFLAIM.
+
+If you choose the third option, the XFLAIM build system will automatically
+locate and use the libflaimtk.la and flaimtk.h files on your system.
+ 
+Installing XFLAIM
+-----------------
+
+To install XFLAIM libraries and header files, you may type the following 
+command after building XFLAIM:
+
+  $ sudo make install
+
+The default prefix for the XFLAIM Autotools build system is "/usr/local".
+If you wish to install in a different location, then use either one of the
+following commands:
+
+  $ ./configure PREFIX=/usr
+  $ make all check
+  $ sudo make install
+
+or 
+
+  $ ./configure
+  $ make prefix=/usr 
+  $ sudo make prefix=/usr install
+
+If you have questions or feedback, please send mail to one of the two user-
+writeable flaim mailing lists:
+
+  1. flaim-users@forge.novell.com
+  2. flaim-devel@forge.novell.com
+
+The flaim-announce list may be subscribed to for occasional notifications of
+updates to all of the FLAIM projects.
+
+Enjoy!
+

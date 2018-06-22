@@ -1,0 +1,101 @@
+FLAIM Tool Kit README file
+==========================
+
+NOTE: This README file covers platform-independant, and GNU/Linux and
+Unix specific information. For information on building and installing
+on Windows platforms, please see the README.W32 file.
+
+Contents
+--------
+1. What is the FLAIM Tool Kit?
+2. Building the FLAIM Tool Kit
+3. Installing the FLAIM Tool Kit
+
+What is the FLAIM Tool Kit?
+---------------------------
+
+FLAIM is an acronym that stands for FLexible Adaptable Information 
+Management. The FLAIM Tool Kit is a system abstraction layer designed
+to provide maximum performance AND portability to all of the flaim 
+projects. The FLAIM Tool Kit (FTK) can be linked either statically 
+or dynamically into the various flaim project libraries, or even into
+your own applications and libraries, thereby providing you with the
+same degree of portability between Unix, Linux, Windows and NetWare.
+
+The FTK package provide source code for the FTK libraries in the "src" 
+directory, and a useful test application (ftktest) in the "util" 
+directory. The test utility is currently only built when you enter
+"make check" on your build host.
+
+Building the FLAIM Tool Kit
+---------------------------
+
+IMPORTANT: You must have installed Autoconf version 2.62, Automake version 
+1.10 and Libtool version 2.2. These are the latest versions of these three
+tools, as of this writing (July 2, 2008).
+
+Building FTK on Unix and Linux systems is as simple as with any other
+Autotools-based project. If you're building from an SVN working directory,
+enter the following command first, immediately after a clean check-out:
+
+  $ autoreconf -i
+
+This command will generate a configure script and Makefile.in templates. 
+If you find yourself modifying the FTK build system (eg., configure.ac
+and Makefile.am files), then you may omit the "-i" option in later 
+executions of the autoreconf utility. 
+
+If you're building from a tarball, you may skip the "autoreconf" step above
+and move right to the following steps:
+
+  $ ./configure
+  $ make all check 
+
+The FTK build system provides all the default functionality provided by 
+any Autotools build system, including VPATH build support. To build from 
+outside the source directory, enter the following commands (for example):
+
+  $ mkdir build
+  $ cd build
+  $ ../configure
+  $ make all check
+ 
+The FLAIM Tool Kit is completely independent of any other projects,
+depending only on a few widely distributed system-level resources, such as
+a POSIX threads library. The FLAIM Tool Kit will also provide a level of
+HTTP security if you use the --enable-openssl option on the configure
+command line. However, this functionality is ancillary and optional.
+
+Installing the FLAIM Tool Kit
+-----------------------------
+
+To install FTK libraries and header files, you may type the following 
+command after building the FLAIM Tool Kit:
+
+  $ sudo make install
+
+The default prefix for the FTK Autotools build system is "/usr/local".
+If you wish to install in a different location, then use either one of the
+following commands:
+
+  $ ./configure PREFIX=/usr
+  $ make all check
+  $ sudo make install
+
+or 
+
+  $ ./configure
+  $ make prefix=/usr 
+  $ sudo make prefix=/usr install
+
+If you have questions or feedback, please send mail to one of the two user-
+writeable flaim mailing lists:
+
+  1. flaim-users@forge.novell.com
+  2. flaim-devel@forge.novell.com
+
+The flaim-announce list may be subscribed to for occasional notifications of
+updates to the FLAIM projects.
+
+Enjoy!
+

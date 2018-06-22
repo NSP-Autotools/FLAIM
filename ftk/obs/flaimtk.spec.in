@@ -1,0 +1,62 @@
+Name: @PACKAGE_TARNAME@
+BuildRequires: gcc-c++ libstdc++ libstdc++-devel doxygen
+Summary: FLAIMTK is the FLAIM cross-platform toolkit.
+URL: http://sourceforge.net/projects/flaim/
+Version: @PACKAGE_VERSION@
+Release: 1
+License: GPL
+Vendor: Novell, Inc.
+Group: Development/Libraries/C and C++
+Source: %{name}-%{version}.tar.gz
+BuildRoot: %{_tmppath}/%{name}-%{version}-build
+
+%description
+FLAIMTK is the FLAIM cross-platform toolkit.
+
+Authors:
+--------
+    dsanders@novell.com
+    ahodgkinson@novell.com
+
+%package devel
+Summary: FTK static library and header file
+Group: Development/Libraries/C and C++
+
+%description devel
+FTK is the FLAIM cross-platform toolkit.
+
+%prep
+%setup -q
+
+%build
+%configure
+make
+
+%check
+make check
+
+%install
+make DESTDIR=%{buildroot} install
+# remove the uncompressed doxygen html directory
+rm -rf %{buildroot}%{_datadir}/doc/%{name}/html
+
+%clean
+rm -rf %{buildroot}
+
+%files
+%defattr(-,root,root)
+%doc %{_datadir}/doc/%{name}/AUTHORS
+%doc %{_datadir}/doc/%{name}/ChangeLog
+%doc %{_datadir}/doc/%{name}/COPYING
+%doc %{_datadir}/doc/%{name}/INSTALL
+%doc %{_datadir}/doc/%{name}/NEWS
+%doc %{_datadir}/doc/%{name}/README
+%doc %{_datadir}/doc/%{name}/%{name}-doxy-%{version}.tar.gz 
+%{_libdir}/libflaimtk.la
+%{_libdir}/libflaimtk.so*
+
+%files devel
+%{_libdir}/pkgconfig/libflaimtk.pc
+%{_libdir}/libflaimtk.a
+%{_includedir}/flaimtk.h
+

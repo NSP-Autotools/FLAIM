@@ -1,0 +1,17 @@
+libflaim (4.9.1003-0ubuntu1) edgy; urgency=low
+
+  * Removed shared libraries from the development package
+  * Removed debian/docs
+  * Added support for 64-bit libraries 
+  * Removed /zp1 compiler switch and added pragmas to
+    do one-byte packing on structures
+  * Fixed mis-typed member of OPT_INFO structure
+  * Corrected errors in the spec file
+
+ -- Andrew Hodgkinson (Sr. Software Engineer) <ahodgkinson@novell.com>  Wed,  4 Oct 2006 11:50:56 -0600
+
+libflaim (4.8.0-0ubuntu1) dapper; urgency=low
+
+  * Initial release
+
+ -- Martin Meredith <mez@ubuntu.com>  Tue, 14 Feb 2006 01:09:45 +0000

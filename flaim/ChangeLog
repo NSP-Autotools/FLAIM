@@ -1,0 +1,189 @@
+2008-06-25  John Calcote  <john.calcote@gmail.com>
+
+     * Added GNU Autotools build system.
+
+-------------------------------------------------------------------
+OLD CHANGELOG INFORMATION APPENDED BELOW THIS POINT
+-------------------------------------------------------------------
+
+Thu Mar 29 08:45:10 MST 2007 - dsanders@novell.com
+
+- Fixed problem of accessing FlmRecord object before it was constructed.
+
+-------------------------------------------------------------------
+Thu Mar 29 09:08:00 CEST 2007 - aj@suse.de
+
+- Add BuildRequires for ncurses-devel.
+
+-------------------------------------------------------------------
+Sat Feb 10 15:46:50 CET 2007 - aj@suse.de
+
+- Add defattr.
+
+-------------------------------------------------------------------
+Thu Feb  8 14:20:19 MST 2007 - dsanders@novell.com
+
+- Changes to support Ubuntu packages, including 64-bit.
+- Needed to lock the record cache mutex in FlmRecord::Release just before deleting the object to prevent a race condition.
+- Changed license to LGPL.
+- Updated copyright.
+- Added pragmas for windows to remove compiler warnings for VC6 compiler.
+- Fixed keyword substitution tokens.
+- Added FlmReadFully() and enhanced the base64 decoder.
+- Removed commands in makefile that was outputting provides to the spec file.
+
+-------------------------------------------------------------------
+Fri Feb  2 00:51:49 CET 2007 - ro@suse.de
+
+- remove self-provides from devel package 
+
+-------------------------------------------------------------------
+Thu Nov 16 16:15:33 MST 2006 - dsanders@novell.com
+
+- Removed .exe files from package.
+- Removed /zp1 compiler switch and added pragmas to do one-byte packing on structures.
+- Getting rid of references to gv_FlmSysData.
+- Needed to add a (FLMUINT) cast to a FLMBOOL before it can be cast as a void *.
+- Fixed mis-typed member of OPT_INFO structure.
+- Fixed Linux compiler warnings.
+- Changed several places that needed to access pDbInfo->pProgress instead of just Progress.
+- Support for Ubuntu and Debian packages
+
+-------------------------------------------------------------------
+Fri Sep 29 21:16:21 CEST 2006 - aj@suse.de
+
+- Remove explicit self-provides
+
+-------------------------------------------------------------------
+Tue Sep  8 13:21:13 MST 2006 - dsanders@novell.com
+
+- Added support for 64 bit numbers.
+- Modified to use aligned buffers to improve direct I/O efficiency.
+- Modified block cache allocator to make more efficient use of memory.
+- Added option to allow disabling of direct I/O on Linux and Unix platforms.
+- Enhancements to reduce the overhead of growing and shrinking files.
+- Modified async I/O to make better reuse of available buffers when writes complete out of order.
+- Fixed some memory leaks and other minor defects.
+- Added more asserts to debug code.
+- Enhancements and improvements to the field ID table inside of FlmRecord object.
+- Updated doxygen document to be more accurate.
+- Added a gigatest utility for testing bulk loads.
+- Added more unit tests.
+- Various tweaks for better support of various platforms and compilers.
+
+-------------------------------------------------------------------
+Tue Jun 27 14:41:47 MST 2006 - dsanders@novell.com
+
+- Needed to make some typedefs public for Solaris 8.
+- Also fixed so that flaimtk.h is copied from ftk.h when building srcdist
+
+-------------------------------------------------------------------
+Fri Jun 23 01:15:10 CEST 2006 - ro@suse.de
+
+- removed buggy self-provides from devel package 
+
+-------------------------------------------------------------------
+Thu Jun 22 16:47:31 MST 2006 - dsanders@novell.com
+
+- Modified common toolkit formatter to support colors when logging.
+- Modified to use common formatter in toolkit for logging.
+
+-------------------------------------------------------------------
+Tue Jun 20 12:57:13 MST 2006 - dsanders@novell.com
+
+- Logger client was not being set up properly in common toolkit.
+- Fixed a Netware build issue
+- Fixed an OS X compiler warning
+- Fixed linux compiler warning
+- Needed to lock/unlock the random generator mutex when getting a random number.
+- f_printf needed to call fflush.
+- Base 64 decoder needed to return success instead of eof hit.
+
+-------------------------------------------------------------------
+Mon Jun 19 09:00:27 MST 2006 - dsanders@novell.com
+
+- Restructured code to use new common toolkit
+- Support for Netware, including unit tests
+- Fixed various memory leaks and enabled memory tracking for debug builds.
+- Made some changes for how async I/O is supported on Solaris.
+- Fixed various compiler warnings on various platforms.
+- Added more documentation.
+
+-------------------------------------------------------------------
+Thu Jun 1 13:30:07 MST 2006 - dsanders@novell.com
+
+- Fixed compiler warnings for ia64 platform.
+
+-------------------------------------------------------------------
+Tue May 30 11:37:12 MST 2006 - dsanders@novell.com
+
+- Added support for Sparc Linux and OpenSuse 10.1
+- Various Makefile changes for HP-UX, OS X, and Solaris
+- Various code cleanups to support a common toolkit
+- Got rid of timeouts for internal transactions.
+- Removed some unused methods from the FlmRecord class.
+- Fixed defect where partial blocks were being written at the end of database files
+- Fixed race condition that was causing memory to be double-freed.
+- Added better support for atomic operations on various Unix and Linux platforms.
+- Allow application to exceed hardcoded cache limits when setting a hard cache limit.
+- Changed RCODE to be an enumerated type - for easier documentation in doxygen.
+- Fixed various compiler issues for solaris platform
+- Added support for large binary and text fields (up to 4 GB)
+- Added async and direct I/O support for Linux and Solaris
+- Added new field table for level one fields inside FlmRecords to speed up searches.
+- Added support for Netware
+- Fixed double mutex lock issue.
+- Added support for building Windows binaries with Visual Studio 8.
+- Modified slab manager on Solaris to use regular malloc calls instead of mmap.
+
+-------------------------------------------------------------------
+Tue Feb 28 13:41:42 MST 2006 - dsanders@novell.com
+
+- Added support for Intel MAC and __sparc49 (64 bit) platforms
+- Initialized variables to quiet compiler warnings
+- Got rid of unneeded internal functions
+- Various fixes for Windows - support for vc8 compiler, workaround to compiler issues with inline methods
+- Fixedup copyright notice in one source file
+
+-------------------------------------------------------------------
+Mon Feb 13 11:14:33 MST 2006 - dsanders@novell.com
+
+- Changed naming convention for shared library to conform to standard - should be no need for SONAME fix now.
+- Added dbshell utility.
+- Started adding support for using autotools.
+- Fixed bug on FlmDbReduceSize - needed to quit when encountering a block in a not-yet-deleted b-tree
+- Added various new unit tests.
+- Fixed various compiler warnings.
+
+-------------------------------------------------------------------
+Mon Feb 13 16:21:11 CET 2006 - ro@suse.de
+
+- install the SONAME at least as symlink (should be the real file) 
+
+-------------------------------------------------------------------
+Wed Feb  8 09:49:29 MST 2006 - dsanders@novell.com
+
+- Removed make.exe and printf.exe from package.
+- Added support for Ubuntu and Debian
+- Simplified how unit tests are created.
+- Added some new unit tests
+
+-------------------------------------------------------------------
+Fri Feb  3 13:14:25 MST 2006 - dsanders@novell.com
+
+- Fixed libflaim.pc to specify includedir and Cflags:
+- Also changed name: to Name:
+- Modified Makefile to use macros for outputting $ and % characters
+
+-------------------------------------------------------------------
+Fri Feb  3 09:13:02 MST 2006 - dsanders@novell.com
+
+- Added support for PowerPC architectures
+- Changed so that revision number for RPMs will match version number
+- in SVN repository.
+
+-------------------------------------------------------------------
+Wed Feb  1 11:54:08 MST 2006 - dsanders@novell.com
+
+- Initial submission
+

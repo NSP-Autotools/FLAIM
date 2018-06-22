@@ -1,0 +1,58 @@
+Source: libflaim
+Priority: optional
+Maintainer: Andrew Hodgkinson (Sr. Software Engineer) <ahodgkinson@novell.com>
+Build-Depends: debhelper (>= 5.0), lib64ncurses5-dev [sparc amd64], libncurses5-dev [sparc i386 amd64]
+Standards-Version: 3.7.2
+Section: libs
+
+Package: libflaim
+Section: libs
+Architecture: i386 amd64 sparc
+Depends: ${shlibs:Depends}
+Description: Embeddable cross-platform database engine
+ FLAIM is an embeddable cross-platform database engine that provides a
+ rich, powerful, easy-to-use feature set. It is the database engine used
+ by Novell eDirectory. It has proven to be highly scalable, reliable,
+ and robust. It is available on a wide variety of 32 bit and 64 bit
+ platforms.  
+ .
+ Homepage: http://developer.novell.com/wiki/index.php/FLAIM
+
+Package: lib64flaim
+Section: libs
+Architecture: sparc amd64
+Depends: ${shlibs:Depends}
+Description: Embeddable cross-platform database engine
+ FLAIM is an embeddable cross-platform database engine that provides a
+ rich, powerful, easy-to-use feature set. It is the database engine used
+ by Novell eDirectory. It has proven to be highly scalable, reliable,
+ and robust. It is available on a wide variety of 32 bit and 64 bit
+ platforms.  
+ .
+ Homepage: http://developer.novell.com/wiki/index.php/FLAIM
+
+Package: libflaim-dev
+Section: libdevel
+Architecture: i386 amd64 sparc
+Depends: libflaim (= ${Source-Version})
+Description: Embeddable cross-platform database engine
+ FLAIM is an embeddable cross-platform database engine that provides a
+ rich, powerful, easy-to-use feature set. It is the database engine used
+ by Novell eDirectory. It has proven to be highly scalable, reliable,
+ and robust. It is available on a wide variety of 32 bit and 64 bit
+ platforms.
+ .
+ Homepage: http://developer.novell.com/wiki/index.php/FLAIM
+
+Package: lib64flaim-dev
+Section: libdevel
+Architecture: sparc amd64
+Depends: lib64flaim (= ${Source-Version})
+Description: Embeddable cross-platform database engine
+ FLAIM is an embeddable cross-platform database engine that provides a
+ rich, powerful, easy-to-use feature set. It is the database engine used
+ by Novell eDirectory. It has proven to be highly scalable, reliable,
+ and robust. It is available on a wide variety of 32 bit and 64 bit
+ platforms.
+ .
+ Homepage: http://developer.novell.com/wiki/index.php/FLAIM

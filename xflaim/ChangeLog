@@ -1,0 +1,179 @@
+2008-06-25  John Calcote  <john.calcote@gmail.com>
+
+     * Added GNU Autotools build system.
+
+-------------------------------------------------------------------
+OLD CHANGELOG INFORMATION APPENDED BELOW THIS POINT
+-------------------------------------------------------------------
+
+Thu Mar 29 08:47:22 MST 2007 - dsanders@novell.com
+
+- Modified so that the java and xedit targets do not require the svn revision to be calculated.
+- Added support for building with an openssl-enabled toolkit.
+- Added public to Query class constructor (JAVA).
+- Increased buffer size for con_printf.
+- Fixed help for export command in xshell utility.
+- Fixed exportXML JAVA method to add a null character to string for C++ layer .
+- Changed JAVA setupQueryExpr method to produce a UTF8 string for C++ layer.
+- Needed to release an open file stream in the import command.
+- Changed PosIStream to IStream in JAVA code.
+- Query parser needed to resolve the name when no prefix was specified using a NULL namespace.
+
+-------------------------------------------------------------------
+Thu Mar 29 13:16:58 CEST 2007 - aj@suse.de
+
+- Add BuildRequires for ncurses-devel.
+
+-------------------------------------------------------------------
+Fri Feb  9 08:56:19 CET 2007 - aj@suse.de
+
+- Add defattr.
+
+-------------------------------------------------------------------
+Thu Feb  8 14:20:19 MST 2007 - dsanders@novell.com
+
+- Changed license to LGPL.
+- Fixed keyword substitution tokens.
+- Added code to automatically start a read transaction (if needed) when iterating over a result set.
+- Added code to handle the 'xml' namespace prefix.
+- Added FlmReadFully() and enhanced the base64 decoder.
+- Removed commands in makefile that was outputting provides to the spec file.
+
+-------------------------------------------------------------------
+Fri Feb  2 00:52:07 CET 2007 - ro@suse.de
+
+- remove self-provides from devel package 
+
+-------------------------------------------------------------------
+Thu Nov 16 16:10:12 MST 2006 - dsanders@novell.com
+
+- Removed .exe files from package.
+
+-------------------------------------------------------------------
+Tue Oct 17 16:40:11 CEST 2006 - dsanders@novell.com
+
+- Fixed various issues for Solaris builds: warnings, unit tests crash, and alignment issues.
+- Various enhancements and bug fixes in the B-Tree code.
+- Changes to remove 1-byte packing (zp1) flags from build.
+- Fixed bug in storeTextAsBinary().
+- Added C# bindings.
+- Updated javadoc documentation.
+
+-------------------------------------------------------------------
+Fri Sep 29 21:17:13 CEST 2006 - aj@suse.de
+
+- Removed self-provides on devel subpackage.
+
+-------------------------------------------------------------------
+Tue Sep  8 13:30:47 MST 2006 - dsanders@novell.com
+
+- Enhanced and updated the Java interfaces to be more complete, including javadoc.
+- Modified Makefile to generate javadoc documentation.
+- Got the Java XEdit utility working again.
+- Modified to use aligned buffers to improve direct I/O efficiency.
+- Modified block cache allocator to make more efficient use of memory.
+- Added option to allow disabling of direct I/O on Linux and Unix platforms.
+- Enhancements to reduce the overhead of growing and shrinking files.
+- Modified async I/O to make better reuse of available buffers when writes complete out of order.
+- Fixed some memory leaks and other minor defects.
+- Various tweaks for better support of various platforms and compilers.
+
+-------------------------------------------------------------------
+Tue Jun 27 14:43:35 MST 2006 - dsanders@novell.com
+
+- Needed to make some typedefs public for Solaris 8.
+- Also fixed so that xflaimtk.h is copied from ftk.h when building srcdist
+
+-------------------------------------------------------------------
+Sun Jun 25 01:26:42 CEST 2006 - ro@suse.de
+
+- removed buggy self-provides on devel subpackage 
+
+-------------------------------------------------------------------
+Fri Jun 23 15:44:33 MST 2006 - dsanders@novell.com
+
+- Changed to depend on java2-devel-packages instead of java2
+
+-------------------------------------------------------------------
+Thu Jun 22 16:46:11 MST 2006 - dsanders@novell.com
+
+- Modified common toolkit formatter to support colors when logging.
+- Modified to use common formatter in toolkit for logging.
+
+-------------------------------------------------------------------
+Tue Jun 20 12:59:32 MST 2006 - dsanders@novell.com
+
+- Logger client was not being set up properly in common toolkit.
+- Fixed a Netware build issue
+- Fixed an OS X compiler warning
+- Fixed linux compiler warning
+- Needed to lock/unlock the random generator mutex when getting a random number.
+- f_printf needed to call fflush.
+- Base 64 decoder needed to return success instead of eof hit.
+
+-------------------------------------------------------------------
+Mon Jun 19 09:03:38 MST 2006 - dsanders@novell.com
+
+- Moved the super-file handle into FTK.
+- Fixed various memory leaks in the unit tests.
+- Support for builing ring zero NLMs on Netware.
+- Moved dynamic result set code to common toolkit.
+- Added more asserts.
+- Fixed more compiler warnings for ia64 platform.
+
+-------------------------------------------------------------------
+Thu Jun 1 13:32:25 MST 2006 - dsanders@novell.com
+
+- Fixed compiler warnings for ia64 platform.
+
+-------------------------------------------------------------------
+Tue May 30 11:37:12 MST 2006 - dsanders@novell.com
+
+- Added JNI support.
+- Added password parameter to the backup method.
+- Modified to use a common toolkit layer for various functions that are common to FLAIM and XFLAIM
+- Added support for Sparc Linux and OpenSuse 10.1
+- Various Makefile changes for HP-UX, OS X, and Solaris
+- Various code cleanups to support a common toolkit
+- Got rid of timeouts for internal transactions.
+- Fixed defect where partial blocks were being written at the end of database files
+- Fixed race condition that was causing memory to be double-freed.
+- Added better support for atomic operations on various Unix and Linux platforms.
+- Allow application to exceed hardcoded cache limits when setting a hard cache limit.
+- Changed all RCODE values so they are different from those in toolkit.
+- Fixed various compiler issues for solaris platform
+- Added support for Netware
+- Added support for building Windows binaries with Visual Studio 8.
+- Modified slab manager on Solaris to use regular malloc calls instead of mmap.
+
+-------------------------------------------------------------------
+Tue Feb 28 13:48:00 MST 2006 - dsanders@novell.com
+
+- Added support for Intel MAC platform and __sparc49 (64 bit solaris).
+
+-------------------------------------------------------------------
+Mon Feb 13 11:28:25 MST 2006 - dsanders@novell.com
+
+- Started adding support for using autotools
+- Changed naming convention for shared library to conform to standard.
+
+-------------------------------------------------------------------
+Wed Feb  8 09:53:07 MST 2006 - dsanders@novell.com
+
+- Removed make.exe and printf.exe from package.
+- Added support for Ubuntu and Debian
+- Simplified how unit tests are created.
+- Added some new unit tests
+
+-------------------------------------------------------------------
+Fri Feb  3 13:17:00 MST 2006 - dsanders@novell.com
+
+- Fixed libflaim.pc to specify includedir and Cflags:
+- Also changed name: to Name:
+- Modified Makefile to use macros for outputting $ and % characters 
+
+-------------------------------------------------------------------
+Fri Feb  3 10:11:53 MST 2006 - dsanders@novell.com
+
+- Initial Revision
+

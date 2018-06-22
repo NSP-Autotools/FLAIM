@@ -1,0 +1,71 @@
+Name: @PACKAGE_TARNAME@
+BuildRequires: gcc-c++ libstdc++-devel flaimtk-devel doxygen
+Requires: libstdc++ flaimtk
+Summary: FLAIM is a database library.
+URL: http://sourceforge.net/projects/flaim/
+Version: @PACKAGE_VERSION@
+Release: 1
+License: GPL
+Vendor: Novell, Inc.
+Group: Development/Libraries/C and C++
+Source: %{name}-%{version}.tar.gz
+BuildRoot: %{_tmppath}/%{name}-%{version}-build
+
+%description
+FLAIM is a database library.
+
+Authors:
+--------
+    dsanders@novell.com
+    ahodgkinson@novell.com
+
+%package devel
+Summary: FLAIM static library and header file
+Group: Development/Libraries/C and C++
+
+%description devel
+FLAIM is a database library.
+
+%prep
+%setup -q
+
+%build
+%configure
+make
+
+%check
+make check
+
+%install
+make DESTDIR=%{buildroot} install
+rm -rf %{buildroot}%{_datadir}/doc/%{name}/html
+
+%clean
+rm -rf %{buildroot}
+
+%files
+%defattr(-,root,root)
+%doc %{_datadir}/doc/%{name}/AUTHORS
+%doc %{_datadir}/doc/%{name}/ChangeLog
+%doc %{_datadir}/doc/%{name}/COPYING
+%doc %{_datadir}/doc/%{name}/INSTALL
+%doc %{_datadir}/doc/%{name}/NEWS
+%doc %{_datadir}/doc/%{name}/README
+%doc %{_datadir}/doc/%{name}/%{name}-doxy-%{version}.tar.gz 
+%doc %{_datadir}/doc/%{name}/FLAIMArchitecture.odg
+%doc %{_datadir}/doc/%{name}/FLAIMArchitecture.png
+%doc %{_datadir}/doc/%{name}/flaim_4_database_format.doc
+%doc %{_datadir}/doc/%{name}/introduction_to_flaim_4.doc
+%{_libdir}/libflaim.la
+%{_libdir}/libflaim.so*
+%{_bindir}/flmcheckdb
+%{_bindir}/flmrebuild
+%{_bindir}/flmview
+%{_bindir}/flmdbshell
+%{_bindir}/flmgigatest
+
+%files devel
+%{_libdir}/pkgconfig/libflaim.pc
+%{_libdir}/libflaim.a
+%{_includedir}/flaim.h
+
